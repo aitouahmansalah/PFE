@@ -20,6 +20,10 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'product-details/:code',
+    loadChildren: () => import('./modules/product/product-details/product-details.module').then( m => m.ProductDetailsPageModule)
+  },
+  {
     path: '**',
     redirectTo: 'barcode-scanning',
   },

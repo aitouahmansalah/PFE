@@ -1,0 +1,26 @@
+<app-header [title]="'ingrediant'"></app-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <ion-grid>
+      <ion-row class="ion-align-items-center ion-justify-content-center">
+        <!-- Main col 1 -->
+        <ion-col size="2">
+          <ion-icon name="cafe-outline" size="large"></ion-icon>
+        </ion-col>
+
+        <!-- Main col 2 -->
+        <ion-col>
+          <span><strong>5 Ingrédients</strong></span>
+        </ion-col>
+
+
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p [innerHTML]="ingrediants"></p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+</ion-content>

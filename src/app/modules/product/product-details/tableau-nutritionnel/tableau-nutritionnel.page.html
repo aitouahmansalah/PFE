@@ -1,0 +1,60 @@
+<app-header [title]="'tableau-nutritionnel'"></app-header>
+
+<ion-content [fullscreen]="true" *ngIf="existes">
+  <ion-card>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="2">
+            <ion-icon name="bar-chart-outline" size="large"></ion-icon>
+          </ion-col>
+
+          <ion-col >
+            <span><strong>Tableau nutritionnel</strong></span>
+          </ion-col>
+
+        </ion-row>
+
+
+
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-text-center">
+          <ion-col><strong>tableau-nutritionnel</strong></ion-col>
+          <ion-col><strong>100 g</strong></ion-col>
+          <ion-col><strong>Comparé a Aliments festifs </strong></ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-text-center">
+          <ion-col>Énergie</ion-col>
+          <ion-col>2000 kj</ion-col>
+          <ion-col>-2%</ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-text-center">
+          <ion-col>calcium</ion-col>
+          <ion-col>{{ nutriments.calcium_100g+" "+nutriments.calcium_unit }}</ion-col>
+          <ion-col>{{ (nutriments.calcium_serving * 100).toFixed(2) }}%</ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-text-center">
+          <ion-col>Énergie</ion-col>
+          <ion-col>2000 kj</ion-col>
+          <ion-col>72%</ion-col>
+        </ion-row>
+        <ion-row class="ion-align-items-center ion-justify-content-center ion-text-center">
+          <ion-col>Énergie</ion-col>
+          <ion-col>2000 kj</ion-col>
+          <ion-col>-2%</ion-col>
+        </ion-row>
+        <hr>
+        <p><strong>Calculer les valeurs nutritionnelles pour une quantité spécifique</strong></p>
+        <ion-row>
+          <ion-col size="8">
+            <ion-input label="" label-placement="floating" fill="solid" placeholder="enter quanti" type="number"></ion-input>
+          </ion-col>
+          <ion-col size="3">
+            <ion-button style="min-height: 53px">
+              calculer
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

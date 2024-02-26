@@ -92,9 +92,22 @@
           [disabled]="isPermissionGranted"
           >Request Permissions</ion-button
         >
+        <ion-button
+          expand="block"
+          (click)="send()"
+          >test</ion-button
+        >
       </form>
     </ion-card-content>
   </ion-card>
+  <ion-item>
+    <ion-label position="fixed">your score</ion-label>
+    <ion-input
+      type="text"
+      readonly
+      [value]="score"
+    ></ion-input>
+  </ion-item>
   @for (barcode of barcodes; track barcode) {
   <ion-card>
     <ion-card-content>

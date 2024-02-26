@@ -9,7 +9,10 @@ import {
 } from '@capacitor-mlkit/barcode-scanning';
 import { FilePicker } from '@capawesome/capacitor-file-picker';
 import { BarcodeScanningModalComponent } from './barcode-scanning-modal.component';
-
+import { HttpClient } from '@angular/common/http';
+import { CodeService } from './code.service';
+import { send } from 'process';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-barcode-scanning',
   templateUrl: './barcode-scanning.page.html',
@@ -28,13 +31,13 @@ export class BarcodeScanningPage implements OnInit {
   public barcodes: Barcode[] = [];
   public isSupported = false;
   public isPermissionGranted = false;
+  public score: number = 0;
 
-  private readonly GH_URL =
-    'https://github.com/capawesome-team/capacitor-barcode-scanning';
-
+  private subject!:Subscription;
   constructor(
     private readonly dialogService: DialogService,
     private readonly ngZone: NgZone,
+    private code:CodeService
   ) {}
 
   public ngOnInit(): void {
@@ -59,6 +62,9 @@ export class BarcodeScanningPage implements OnInit {
         },
       );
     });
+    this.subject = this.code.scoreEmitter.subscribe((score: number) => {
+      this.score = score;
+    });
   }
 
   public async startScan(): Promise<void> {
@@ -78,6 +84,9 @@ export class BarcodeScanningPage implements OnInit {
     element.onDidDismiss().then((result) => {
       const barcode: Barcode | undefined = result.data?.barcode;
       if (barcode) {
+        
+      this.code.find(barcode.displayValue)
+        
         this.barcodes = [barcode];
       }
     });
@@ -97,12 +106,22 @@ export class BarcodeScanningPage implements OnInit {
     this.barcodes = barcodes;
   }
 
+  public async send(){
+    
+       this.code.find("6111128000071");
+
+  }
+
   public async scan(): Promise<void> {
     const formats = this.formGroup.get('formats')?.value || [];
     const { barcodes } = await BarcodeScanner.scan({
       formats,
     });
     this.barcodes = barcodes;
+    barcodes.forEach((barcode)=>{
+      this.code.find(barcode.displayValue)
+    })
+    
   }
 
   public async openSettings(): Promise<void> {
@@ -117,7 +136,6 @@ export class BarcodeScanningPage implements OnInit {
     await BarcodeScanner.requestPermissions();
   }
 
-  public openOnGithub(): void {
-    window.open(this.GH_URL, '_blank');
-  }
 }
+
+ 

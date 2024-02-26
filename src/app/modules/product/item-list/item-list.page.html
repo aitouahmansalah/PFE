@@ -1,0 +1,12 @@
+<app-header></app-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <app-item *ngFor="let i of test " [routerLink]="['product-details']"></app-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

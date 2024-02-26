@@ -1,0 +1,134 @@
+<app-header *ngIf="existes" [title]="'product '+product.generic_name"></app-header>
+<ion-content [fullscreen]="true" *ngIf="existes">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{product.generic_name}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-img
+  [src]="product.image_front_url"
+></ion-img>
+
+
+<ion-grid>
+
+  <ion-row>
+    <ion-col><span class="ion-text-start name-product">{{product.generic_name}}</span></ion-col>
+    <ion-col class="ion-text-end"> <span class=" name-product">{{product.quantity}}</span></ion-col>
+  </ion-row>
+
+
+
+  <ion-row>
+    <ion-col>
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>Santé</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          <ion-grid [fixed]="true">
+            <ion-row>
+              <ion-col>
+                <ion-card-subtitle>Nutrition</ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+
+            <ion-row class="ion-align-items-center ion-margin-bottom" [routerLink]="['nutri-score']">
+
+              <ion-col size="3">
+                <ion-img src="../../assets/nutri-score-a.png"></ion-img>
+
+              </ion-col>
+
+
+              <ion-col>
+                <span><strong>Trés bonne qualité nutritionnelle</strong></span>
+              </ion-col>
+
+
+              <ion-col  size="2" class="ion-text-end">
+
+                  <ion-icon name="arrow-forward-outline" size="large"></ion-icon>
+
+              </ion-col>
+
+            </ion-row>
+
+            <ion-row class="ion-align-items-center ion-margin-bottom" >
+
+              <ion-col size="2">
+                <ion-icon name="restaurant-outline" size="large"></ion-icon>
+              </ion-col>
+
+              <!-- Main col 2 -->
+              <ion-col>
+                <span><strong>Trés bonne qualité nutritionnelle</strong></span>
+              </ion-col>
+
+              <!-- Main col 3 -->
+              <ion-col  size="2" class="ion-text-end">
+
+                  <ion-icon name="arrow-forward-outline" size="large"></ion-icon>
+
+              </ion-col>
+
+            </ion-row>
+
+            <ion-row class="ion-align-items-center ion-margin-bottom" [routerLink]="['tableau-nutritionnel']" >
+
+              <ion-col size="2">
+                <ion-icon name="bar-chart-outline" size="large"></ion-icon>
+              </ion-col>
+
+
+              <ion-col>
+                <span><strong>Tableau nutritionnel</strong></span>
+              </ion-col>
+
+
+              <ion-col  size="2" class="ion-text-end">
+
+                  <ion-icon name="arrow-forward-outline" size="large"></ion-icon>
+
+              </ion-col>
+
+            </ion-row>
+
+            <ion-row>
+              <ion-col>
+                <ion-card-subtitle>Ingrédient</ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+            <ion-row class="ion-align-items-center ion-margin-bottom" [routerLink]="['ingrediant']">
+              <!-- Main col 1 -->
+              <ion-col size="2">
+                <ion-icon name="cafe-outline" size="large"></ion-icon>
+              </ion-col>
+
+              <!-- Main col 2 -->
+              <ion-col>
+                <span><strong>5 Ingrédients</strong></span>
+              </ion-col>
+
+              <!-- Main col 3 -->
+              <ion-col  size="2" class="ion-text-end">
+
+                  <ion-icon name="arrow-forward-outline" size="large"></ion-icon>
+
+              </ion-col>
+
+            </ion-row>
+
+
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+</ion-content>
+
+<ion-content *ngIf="!existes">
+  <app-loading-spiner></app-loading-spiner>
+</ion-content>
